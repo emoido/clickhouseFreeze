@@ -3,6 +3,7 @@
 * Create 2 nodes cluster without replicas.
 * Cluster name is "cluster_freeze".
 * Configure cluster with the help of this [document](https://clickhouse.com/docs/en/guides/sre/keeper/clickhouse-keeper).
+* OS User must have sudo privilege.
 
 ## Environment
 * ClickHouse 22.9.3.18
@@ -30,8 +31,27 @@ ls -1 flightlist_*.csv.gz | xargs -P100 -I{} bash -c 'gzip -c -d "{}" | clickhou
 
 * **Freeze nonpartitioned table.Run the following command on all nodes in the cluster:** [07_freezenonpartition.sql](https://github.com/emoido/clickhouseFreeze/blob/main/07_freezenonpartition.sql)
 * **For restore tests, created "destdb" on the same cluster:** [08_createdestdb.sql](https://github.com/emoido/clickhouseFreeze/blob/main/08_createdestdb.sql)
-* **Create destination tables.Run the following commands on all nodes in the cluster:** 
+* **Create local destination tables.Run the following commands on all nodes in the cluster:** 
 [09_desttable_partitioned_local.sql](https://github.com/emoido/clickhouseFreeze/blob/main/09_desttable_partitioned_local.sql)
 [10_desttable_nonpartitioned_local.sql](https://github.com/emoido/clickhouseFreeze/blob/main/10_desttable_nonpartitioned_local.sql)
+* **Create distributed destination tables:**
+[11_desttable_partitioned.sql](https://github.com/emoido/clickhouseFreeze/blob/main/11_desttable_partitioned.sql)
+[12_desttable_nonpartitioned.sql](https://github.com/emoido/clickhouseFreeze/blob/main/12_desttable_nonpartitioned.sql)
+* **Run the following command to copy freeze files to destination table's "detached" directory**
+```bash
+sudo su -c "./rsync.sh" root
+```
+* **For the partitioned table you can directly attach partition with the following command.Run the command on all nodes in the cluster:** 
+```sql
+ALTER TABLE destdb.desttable_partitioned_local
+    ATTACH PARTITION 201903;
+```
+* For the nonpartitioned table run the following command on all nodes in the cluster. You need to change password**
+```bash
+sudo su -c "./attachpart.sh default_users_password" root
+```
+
+
+
 
 
