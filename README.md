@@ -89,6 +89,9 @@ clickhouse-client --password=your_password --queries-file "12_desttable_nonparti
 sudo su -c "./rsync.sh" root
 ```
 * **For the partitioned table you can directly attach partition with the following command.Run the command on all nodes in the cluster:** 
+```bash
+clickhouse-client --password=your_password
+```
 ```sql
 ALTER TABLE destdb.desttable_partitioned_local
     ATTACH PARTITION 201903;
