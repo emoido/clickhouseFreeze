@@ -10,6 +10,6 @@
 
 ## Steps
 
-* **Create database on cluster**
+* **Create database on cluster**[01_createsourcedb.sql]
 
 
