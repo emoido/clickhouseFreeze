@@ -8,4 +8,8 @@
 * ClickHouse 22.9.3.18
 * Ubuntu Linux 22.04.1 LTS
 
+## Steps
+
+* **Create database on cluster**
+
 
