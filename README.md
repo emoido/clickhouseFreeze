@@ -11,7 +11,7 @@
 
 ## Steps
 
-* **Clone the repository to the every node on the cluster:**
+* **Clone the repository to the every nodes on the cluster:**
 ```bash
 git clone https://github.com/emoido/clickhouseFreeze.git
 ```
