@@ -17,3 +17,4 @@ CREATE TABLE destdb.desttable_partitioned ON CLUSTER cluster_freeze
     `longitude_2` Float64,
     `altitude_2` Float64
 )
+ENGINE = Distributed('cluster_freeze', 'destdb', 'desttable_partitioned_local', cityHash64(origin, destination, callsign));
