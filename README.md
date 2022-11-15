@@ -10,6 +10,8 @@
 
 ## Steps
 
-* **Create database on cluster**[01_createsourcedb.sql]
+* **Create database on cluster:** [01_createsourcedb.sql](https://github.com/emoido/clickhouseFreeze/blob/main/01_createsourcedb.sql)
+* **Create partitioned table:** []()
+* **Create nonpartitioned table** []()
 
 
