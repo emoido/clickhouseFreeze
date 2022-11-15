@@ -26,6 +26,6 @@ ls -1 flightlist_*.csv.gz | xargs -P100 -I{} bash -c 'gzip -c -d "{}" | clickhou
 
 ls -1 flightlist_*.csv.gz | xargs -P100 -I{} bash -c 'gzip -c -d "{}" | clickhouse-client --password=your_password --date_time_input_format best_effort --query "INSERT INTO sourcedb.sourcetable_partitioned FORMAT CSVWithNames"'
 ```
-
+* **Freeze partitioned table.Run the following command on all nodes in the cluster. If you don't specify partition clause, it will backup all partitions: [06_freezepartition.sql](https://github.com/emoido/clickhouseFreeze/blob/main/06_freezepartition.sql)
 
 
