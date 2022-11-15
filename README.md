@@ -15,5 +15,17 @@
 * **Create nonpartitioned table(This command must execute every nodes on the cluster):** [03_sourcetable_nonpartitioned_local.sql](https://github.com/emoido/clickhouseFreeze/blob/main/03_sourcetable_nonpartitioned_local.sql)
 *  **Create distributed partitioned table:** [04_sourcetable_partitioned.sql](https://github.com/emoido/clickhouseFreeze/blob/main/04_sourcetable_partitioned.sql)
 *  **Create distributed nonpartitioned table:** [05_sourcetable_nonpartitioned.sql](https://github.com/emoido/clickhouseFreeze/blob/main/05_sourcetable_nonpartitioned.sql)
+* **Download sample dataset with the following command. In the scope of this test, We downloaded and used 4 months data, but you can download and install all data.**
+```bash
+wget -O- https://zenodo.org/record/5092942 | grep -oP 'https://zenodo.org/record/5092942/files/flightlist_\d+_\d+\.csv\.gz' | xargs wget
+```
+* **Insert data both partitioned and nonpartitioned tables**
+```bash
+ls -1 flightlist_*.csv.gz | xargs -P100 -I{} bash -c 'gzip -c -d "{}" | clickhouse-client --password=your_password --date_time_input_format best_effort --query "INSERT INTO sourcedb.sourcetable_nonpartitioned FORMAT CSVWithNames"'
+
+
+ls -1 flightlist_*.csv.gz | xargs -P100 -I{} bash -c 'gzip -c -d "{}" | clickhouse-client --password=your_password --date_time_input_format best_effort --query "INSERT INTO sourcedb.sourcetable_partitioned FORMAT CSVWithNames"'
+```
+
 
 
