@@ -29,5 +29,9 @@ ls -1 flightlist_*.csv.gz | xargs -P100 -I{} bash -c 'gzip -c -d "{}" | clickhou
 * **Freeze partitioned table.Run the following command on all nodes in the cluster. If you don't specify partition clause, it will backup all partitions:** [06_freezepartition.sql](https://github.com/emoido/clickhouseFreeze/blob/main/06_freezepartition.sql)
 
 * **Freeze nonpartitioned table.Run the following command on all nodes in the cluster:** [07_freezenonpartition.sql](https://github.com/emoido/clickhouseFreeze/blob/main/07_freezenonpartition.sql)
+* **For restore tests, created "destdb" on the same cluster:** [08_createdestdb.sql](https://github.com/emoido/clickhouseFreeze/blob/main/08_createdestdb.sql)
+* **Create destination tables.Run the following commands on all nodes in the cluster:** 
+[09_desttable_partitioned_local.sql](https://github.com/emoido/clickhouseFreeze/blob/main/09_desttable_partitioned_local.sql)
+[10_desttable_nonpartitioned_local.sql](https://github.com/emoido/clickhouseFreeze/blob/main/10_desttable_nonpartitioned_local.sql)
 
 
