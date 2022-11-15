@@ -11,7 +11,7 @@
 ## Steps
 
 * **Create database on cluster:** [01_createsourcedb.sql](https://github.com/emoido/clickhouseFreeze/blob/main/01_createsourcedb.sql)
-* **Create partitioned table:** [02_sourcetable_partitioned_local.sql](https://github.com/emoido/clickhouseFreeze/blob/main/02_sourcetable_partitioned_local.sql)
-* **Create nonpartitioned table:** [03_sourcetable_nonpartitioned_local.sql](https://github.com/emoido/clickhouseFreeze/blob/main/03_sourcetable_nonpartitioned_local.sql)
+* **Create partitioned table(run every nodes):** [02_sourcetable_partitioned_local.sql](https://github.com/emoido/clickhouseFreeze/blob/main/02_sourcetable_partitioned_local.sql)
+* **Create nonpartitioned table(run every nodes):** [03_sourcetable_nonpartitioned_local.sql](https://github.com/emoido/clickhouseFreeze/blob/main/03_sourcetable_nonpartitioned_local.sql)
 
 
